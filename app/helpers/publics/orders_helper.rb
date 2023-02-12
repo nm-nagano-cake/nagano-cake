@@ -1,0 +1,2 @@
+module Publics::OrdersHelper
+end

@@ -1,0 +1,96 @@
+<html>
+  
+ <div>
+	<div class="col-xs-3">
+		<!--<= render 'genre_serch_form', genres: @genres %>-->
+    </div>
+    <div class="col-xs-9">
+    	<div>
+				<!--<= image_tag("top.png", class: "top_image") %>-->
+				<div class="main-visual">
+					<p class="main-visual-text">
+						  ようこそ、NaganoCakeへ！<br>
+						  このサイトは、ケーキ販売のECサイトになります。<br>
+						  会員でない方も商品の閲覧はできますが、<br>
+						  購入には会員登録が必要になります。
+					</p>
+				</div>
+			</div>
+    	<div class="recommend">
+    		<h2>オススメ商品</h2>
+    	<% @items.each do |item| %>
+			    <div class="customer-box">
+			    	<table class="table">
+			    		<tr>
+					    	<th><%= link_to item_path(item) do %>
+							<%= image_tag item.get_image(180,130) %>
+							<% end %>
+						    </th>
+							</tr>
+							<tr>
+								<th><%= link_to item.name, item_path(item) %></th>
+							</tr>
+							<tr>
+									<th>￥<%= (item.price * 1.1).to_i %></th>
+							</tr>
+						</table>
+			    </div>
+		    <% end %>
+    	</div>
+    </div>
+    <div class="index-link">
+        <%= link_to "もっと見る>", items_path %>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel carousel-fade slide" data-ride="carousel">
+
+  <!-- スライドさせる画像の設定 -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!--<= image_tag 'ninjin_cake.jpg', class: 'd-block w-100' %>-->
+    </div>
+    <div class="carousel-item">
+      <!--<= image_tag 'shungiku_cake.jpg', class: 'd-block w-100' %>-->
+    </div>
+    <div class="carousel-item">
+      <!--<= image_tag 'valentine_coolies.jpg', class: 'd-block w-100' %>-->
+    </div>
+    <div class="carousel-item">
+      <!--<= image_tag 'vegetables_cake.jpg', class: 'd-block w-100' %>-->
+    </div>
+  </div><!-- /.carousel-inner -->
+
+  <!-- スライドコントロールの設定 -->
+  <!-- "<"のデザイン -->
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </a>
+  <!-- ">"のデザイン -->
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </a>
+</div><!-- /.carousel -->
+
+<div class="container my-5">
+  <div class="row">
+      <h3 class="red-border px-3 pb-1">New Item</h3>
+  </div>
+
+  <div class="row mx-auto mt-3">
+    <% @items.last(4).each do |item| %>
+      <div class="mx-auto">
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.get_image(100, 100) %><br>
+        <% end %>
+        <div class="row mt-3">
+          <span class="red-border px-3"><%= item.name %></span>
+        </div>
+        <div class="row mt-1">
+          <span class="offset-8"><%= (item.price * 1.1).floor %> 円</span>
+        </div>
+      </div>
+    <% end %>
+   </div>
+  </div>
+ </div>
+ 
+</html>
