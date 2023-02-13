@@ -33,8 +33,10 @@ class Public::SessionsController < Devise::SessionsController
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_customer_session_path
+      
+      else
+      flash[:notice] = "項目を入力してください"
       end
-    else
     end
   end
 

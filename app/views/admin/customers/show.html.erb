@@ -10,13 +10,13 @@
           <tr>
             <td>顧客ID</td>
             <td><%= @customer.id %>
-              <% if @customer.is_enabled == true %>
+              <% if @customer.is_deleted == true %>
                 <div class="bg-info d-inline text-white p-1 ml-3 rounded">
-                  有効会員
+                  退会済み
                 </div>
               <% else %>
                 <div class="bg-warning d-inline text-white p-1 ml-3 rounded">
-                  退会済み
+                  有効会員
                 </div>
               <% end %>
 
@@ -38,7 +38,7 @@
 
           <tr>
             <td>郵便番号</td>
-            <td><%= @customer.post_code %></td>
+            <td><%= @customer.postal_code %></td>
           </tr>
 
           <tr>
@@ -48,7 +48,7 @@
 
           <tr>
             <td>電話番号</td>
-            <td><%= @customer.phone_number %></td>
+            <td><%= @customer.telephone_number %></td>
           </tr>
 
           <tr>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="col-sm-3 my-auto">
-      <%= link_to "編集する", edit_admin_customer_data_path, class: "btn btn-primary" %>
+      <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-primary" %>
       <%= link_to "注文履歴一覧を見る", admin_customer_data_orders_path, class: "btn btn-primary mt-5" %>
     </div>
 

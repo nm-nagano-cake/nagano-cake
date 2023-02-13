@@ -25,8 +25,8 @@ class Admin::OrdersController < ApplicationController
   def calculate(items_total_price) # 商品合計を算出するメソッド
     @items_total_price = 0
     @order_details.each {|order_detail|
-    tax_in_price = (order_detail.item_price * 1.1).floor
-    sub_total_price = tax_in_price * order_detail.quantity
+      price = (order_detail.item_id * 1.1).floor
+    sub_total_price = price * order_detail.amount
     @items_total_price += sub_total_price
     }
     return @items_total_price

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post "orders/confirm" => "orders#confirm"
     resources :orders, only: [:new, :show, :create, :index]
     # 会員
-    get "customers/withdrawal" => "customers#withdrawal"
+    get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdrawal" => "customers#withdrawal"
     resources :customers, only: [:show, :edit, :update, :destroy]
     # カート
@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :genres, only: [:index] do
       resources :items, only: [:index]
-      
+
     end
     resources :orders, except: [:edit, :update, :destroy]
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
